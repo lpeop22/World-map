@@ -1,0 +1,33 @@
+<main style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; padding: 20px;">
+
+  <div style="flex: 1; min-width: 1000px; margin-right: 50px;">
+  <app-world-map (countrySelected)="displayCountryInfo($event)"></app-world-map>
+</div>
+
+
+
+<div style="flex: 1; min-width: 200px; border: 10px solid hsl(295, 73%, 13%); padding: 20px;">
+  <ng-container *ngIf="selectedCountry; else noSelection">
+    <div *ngIf="hoveredCountryName" class="tooltip">
+      {{ hoveredCountryName }}
+    </div>
+  <h2>Country Information</h2>
+  <div id="country-info">
+
+     <h3>{{ selectedCountry.name }}</h3>
+     <p><strong>Capital:</strong> {{ selectedCountry.capitalCity }}</p>
+     <p><strong>Region:</strong> {{ selectedCountry.region.value }}</p>
+     <p><strong>Income Level:</strong> {{ selectedCountry.incomeLevel.value }}</p>
+     <p><strong>Latitude:</strong> {{ selectedCountry.latitude }}</p>
+     <p><strong>Longitude:</strong> {{ selectedCountry.longitude }}</p>
+     
+    
+  </div>
+</ng-container>
+<ng-template #noSelection>
+    <p>Select a country to view information</p>
+</ng-template>
+
+  </div>
+
+</main>
